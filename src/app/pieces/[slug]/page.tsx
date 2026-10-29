@@ -3,8 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AddToBag } from "@/components/AddToBag";
 import { Gallery } from "@/components/Gallery";
-import { ProductCard } from "@/components/ProductCard";
-import { formatPrice, getProduct, pieceNumber, PRODUCTS, relatedTo } from "@/lib/products";
+import { priceLabel, ProductCard } from "@/components/ProductCard";
+import { getProduct, pieceNumber, PRODUCTS, relatedTo } from "@/lib/products";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   if (!product) return {};
   return {
     title: `${pieceNumber(product.number)} ${product.name}`,
-    description: `${product.description} ${product.material}.`,
+    description: `${product.type}. ${product.description}`,
   };
 }
 
@@ -38,7 +38,7 @@ export default async function ProductPage({ params }: Params) {
   return (
     <div className="wrap">
       <div className="pdp">
-        <Gallery shots={shots} />
+        <Gallery shots={shots} image={product.image} alt={product.type} />
 
         <div className="pdp-info">
           <p className="t-label muted" style={{ margin: "0 0 12px" }}>
@@ -46,10 +46,10 @@ export default async function ProductPage({ params }: Params) {
           </p>
           <h1 className="t-title">{product.name}</h1>
           <p className="t-ui" style={{ margin: "12px 0 0" }}>
-            {formatPrice(product.price)}
+            {priceLabel(product)}
           </p>
           <p className="t-ui muted" style={{ margin: "4px 0 0" }}>
-            {product.material}
+            {product.type}
           </p>
           <p style={{ margin: "28px 0 0" }}>{product.description}</p>
 

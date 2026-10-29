@@ -20,10 +20,11 @@ npm run build      # production build
 
 ## Placeholders still in the site
 
-- **Photos:** every image is a labelled bone-colored box. Each label names the shot from `docs/visual-identity.md` (e.g. `No. 04 · On body`).
+- **Photos:** pieces 01–08 have retouched still lifes (`public/images/pieces/`, made with `scripts/photos/`). Other shots (on body, detail, hero, atelier) and pieces 09–12 are labelled placeholder boxes.
+- **Names:** every piece shows `[Name]`. Details in [brackets] (metal, stone, size) are also placeholders.
 - **Copy in [brackets]:** brand story on Home and Atelier, founder name, contact email and Instagram.
 - **Policies:** free shipping, 30-day returns and ship times (Home trust strip, product page, Care page).
-- **Catalog:** all 12 names, prices and measurements.
+- **Catalog:** prices and measurements. Pieces 09–12 show "Coming soon".
 - **Checkout:** `/checkout` is a stub that shows the order flow. Connect Shopify (or Stripe) and point the bag's Checkout button at it.
 - **Forms:** newsletter, contact and "Notify me" show a confirmation but don't send anything yet.
 

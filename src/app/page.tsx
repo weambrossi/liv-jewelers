@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { NewsletterForm } from "@/components/NewsletterForm";
+import { PieceImage } from "@/components/PieceImage";
 import { Placeholder } from "@/components/Placeholder";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
@@ -37,7 +38,11 @@ export default function Home() {
         <div className="wrap spotlight">
           <Reveal>
             <Link href={`/pieces/${spotlight.slug}`}>
-              <Placeholder label={`${pieceNumber(spotlight.number)} · Still life`} />
+              <PieceImage
+                product={spotlight}
+                label={`${pieceNumber(spotlight.number)} · Still life`}
+                sizes="(max-width: 860px) 100vw, 640px"
+              />
             </Link>
           </Reveal>
           <Reveal className="spotlight-info" delay={120}>
@@ -46,7 +51,7 @@ export default function Home() {
             </p>
             <h2 className="t-display">{spotlight.name}</h2>
             <p className="t-ui muted" style={{ margin: "16px 0 0" }}>
-              {spotlight.material} · {formatPrice(spotlight.price)}
+              {spotlight.type} · {formatPrice(spotlight.price)}
             </p>
             <p style={{ margin: "24px 0 32px", maxWidth: 360 }}>{spotlight.description}</p>
             <Link href={`/pieces/${spotlight.slug}`} className="t-label link">

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useCart } from "@/components/CartContext";
-import { Placeholder } from "@/components/Placeholder";
+import { PieceImage } from "@/components/PieceImage";
 import { formatPrice, pieceNumber } from "@/lib/products";
 
 // Stub checkout. When the store is connected, the bag's Checkout button should
@@ -112,13 +112,13 @@ export default function CheckoutPage() {
           <p className="t-label" style={{ margin: "0 0 8px" }}>Order summary</p>
           {cart.items.map((item) => (
             <div key={item.slug + (item.option ?? "")} className="line-item" style={{ gridTemplateColumns: "56px 1fr auto" }}>
-              <Placeholder label="" />
+              <PieceImage product={item.product} label="" sizes="56px" />
               <div className="t-ui">
                 <p style={{ margin: 0 }}>
                   <span className="muted">{pieceNumber(item.product.number)}</span> {item.product.name}
                 </p>
                 <p className="muted" style={{ margin: "2px 0 0" }}>
-                  {item.product.material}
+                  {item.product.type}
                   {item.option && ` · ${item.product.options?.label} ${item.option}`}
                   {item.qty > 1 && ` · ×${item.qty}`}
                 </p>

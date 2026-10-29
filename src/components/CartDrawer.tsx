@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { formatPrice, pieceNumber } from "@/lib/products";
 import { useCart } from "./CartContext";
-import { Placeholder } from "./Placeholder";
+import { PieceImage } from "./PieceImage";
 
 export function CartDrawer() {
   const cart = useCart();
@@ -45,7 +45,7 @@ export function CartDrawer() {
             cart.items.map((item) => (
               <div className="line-item" key={item.slug + (item.option ?? "")}>
                 <Link href={`/pieces/${item.slug}`} onClick={cart.close}>
-                  <Placeholder label="" />
+                  <PieceImage product={item.product} label="" sizes="72px" />
                 </Link>
                 <div>
                   <p className="t-label muted" style={{ margin: "0 0 4px" }}>
@@ -55,7 +55,7 @@ export function CartDrawer() {
                     {item.product.name}
                   </Link>
                   <p className="t-ui muted" style={{ margin: "4px 0 12px" }}>
-                    {item.product.material}
+                    {item.product.type}
                     {item.option && ` · ${item.product.options?.label} ${item.option}`}
                   </p>
                   <div style={{ display: "flex", alignItems: "center", gap: 16 }}>

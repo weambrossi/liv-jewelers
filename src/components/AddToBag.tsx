@@ -10,6 +10,16 @@ export function AddToBag({ product }: { product: Product }) {
   const [notify, setNotify] = useState(false);
   const needsOption = !!product.options && !option;
 
+  if (product.upcoming) {
+    return (
+      <div className="pdp-buy">
+        <button className="btn btn-primary" disabled>
+          Coming soon
+        </button>
+      </div>
+    );
+  }
+
   if (product.soldOut) {
     return (
       <div className="pdp-buy">
